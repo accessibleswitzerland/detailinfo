@@ -1,0 +1,213 @@
+Replace your root `index.html` completely with the following ready-to-use code. It features large, high-contrast tap targets, unquoted `href` paths to keep your setup happy, and a quick live search bar so older folks don't have to scroll through 66 entries blindly:
+
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset=UTF-8>
+  <meta name=viewport content="width=device-width, initial-scale=1.0">
+  <title>Barrierefreie Hotels & Unterkünfte Schweiz</title>
+  <style>
+    :root {
+      --primary: #005bb5;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --border: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      margin: 0;
+      padding: 30px 16px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    p.subtitle {
+      font-size: 1.05rem;
+      color: #475569;
+      margin-top: 0;
+    }
+
+    .search-box {
+      margin-bottom: 24px;
+    }
+
+    input[type=text] {
+      width: 100%;
+      font-size: 1.15rem;
+      padding: 14px 16px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      outline: none;
+      background: #ffffff;
+    }
+
+    input[type=text]:focus {
+      border-color: var(--primary);
+    }
+
+    ul.hotel-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    li.hotel-item a {
+      display: block;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      transition: background-color 0.15s ease, transform 0.05s ease;
+    }
+
+    li.hotel-item a:hover {
+      background: #eff6ff;
+      border-color: var(--primary);
+    }
+
+    li.hotel-item a:active {
+      transform: scale(0.99);
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #64748b;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class=container>
+    <header>
+      <h1>Barrierefreie Hotels & Unterkünfte</h1>
+      <p class=subtitle>Wählen Sie ein Hotel aus der Liste aus, um die detaillierten Zugänglichkeitsangaben anzusehen.</p>
+    </header>
+
+    <div class=search-box>
+      <input type=text id=searchBar placeholder="Hotel suchen..." onkeyup=filterHotels()>
+    </div>
+
+    <ul class=hotel-list id=hotelList>
+      <li class=hotel-item><a href=./Acasa/>Acasa Suites</a></li>
+      <li class=hotel-item><a href=./Afterwork/>Afterwork Hotel</a></li>
+      <li class=hotel-item><a href=./Albergo_federale/>Albergo Federale</a></li>
+      <li class=hotel-item><a href=./AlbergoLosone/>Albergo Losone</a></li>
+      <li class=hotel-item><a href=./Allegra/>Hotel Allegra</a></li>
+      <li class=hotel-item><a href=./Allegro/>Hotel Allegro</a></li>
+      <li class=hotel-item><a href=./Alma/>Alma Hotel</a></li>
+      <li class=hotel-item><a href=./Arbed/>Arbed Living Hotel</a></li>
+      <li class=hotel-item><a href=./Artos/>Hotel Artos Interlaken</a></li>
+      <li class=hotel-item><a href=./BadHorn/>Bad Horn Hotel & Spa</a></li>
+      <li class=hotel-item><a href=./BadRamsach/>Bad Ramsach Quellhotel</a></li>
+      <li class=hotel-item><a href=./BainsdeSaillon/>Hôtel des Bains de Saillon</a></li>
+      <li class=hotel-item><a href=./Beatus/>BEATUS Wellness- & Spa-Hotel</a></li>
+      <li class=hotel-item><a href=./Beaulieu/>Senevita Résidence Beaulieu</a></li>
+      <li class=hotel-item><a href=./BellaVista/>Hotel Bella Vista</a></li>
+      <li class=hotel-item><a href=./BellevueBern/>Hotel Bellevue Palace</a></li>
+      <li class=hotel-item><a href=./BildungszentrumMatt/>Hotel & Bildungszentrum Matt</a></li>
+      <li class=hotel-item><a href=./BonRivage/>Hôtel Bon Rivage</a></li>
+      <li class=hotel-item><a href=./Brenscino/>Parkhotel Brenscino Brissago</a></li>
+      <li class=hotel-item><a href=./Bretterhotel/>Trauffer Erlebniswelt & Bretterhotel</a></li>
+      <li class=hotel-item><a href=./CentralamSee/>Hotel Central am See</a></li>
+      <li class=hotel-item><a href=./CIP/>CIP Hôtel</a></li>
+      <li class=hotel-item><a href=./CityLocarno/>Hotel City Locarno, City Lifestyle</a></li>
+      <li class=hotel-item><a href=./CourtyardBiel/>Courtyard by Marriott Biel / Bienne</a></li>
+      <li class=hotel-item><a href=./DesPatients/>Hôtel des Patients</a></li>
+      <li class=hotel-item><a href=./Dom/>Hotel Dom</a></li>
+      <li class=hotel-item><a href=./DuTheatre/>Hôtel du Théâtre</a></li>
+      <li class=hotel-item><a href=./EdenSpiez/>Hotel Eden Spiez</a></li>
+      <li class=hotel-item><a href=./Einstein/>Einstein St. Gallen</a></li>
+      <li class=hotel-item><a href=./Elena/>Albergo Garni Elena</a></li>
+      <li class=hotel-item><a href=./Emmaus/>Parkhotel Emmaus</a></li>
+      <li class=hotel-item><a href=./ErmitageChoex/>Hôtel-Restaurant Ermitage</a></li>
+      <li class=hotel-item><a href=./ErmitageSchoenried/>ERMITAGE Wellness- & Spa-Hotel</a></li>
+      <li class=hotel-item><a href=./Everness/>EVERNESS Hotel & Resort</a></li>
+      <li class=hotel-item><a href=./FerienhotelBodensee/>Ferienhotel Bodensee</a></li>
+      <li class=hotel-item><a href=./Florida/>Hotel Florida</a></li>
+      <li class=hotel-item><a href=./GrandHotelYverdon/>Grand Hôtel et Centre Thermal, Yverdon-les-Bains</a></li>
+      <li class=hotel-item><a href=./Heiden/>Hotel Heiden - Wellness am Bodensee</a></li>
+      <li class=hotel-item><a href=./InternationalauLac/>International au Lac Historic Lakeside Hotel</a></li>
+      <li class=hotel-item><a href=./Lenkerhof/>Lenkerhof gourmet spa resort</a></li>
+      <li class=hotel-item><a href=./Lihn/>Seminarhotel Lihn</a></li>
+      <li class=hotel-item><a href=./Lindenegg/>Hotel Villa Lindenegg</a></li>
+      <li class=hotel-item><a href=./Magliaso/>Centro Magliaso</a></li>
+      <li class=hotel-item><a href=./MaisondIgor/>La Maison d'Igor</a></li>
+      <li class=hotel-item><a href=./Margna/>Parkhotel Margna</a></li>
+      <li class=hotel-item><a href=./MercureBiel/>Mercure Hotel Plaza Biel</a></li>
+      <li class=hotel-item><a href=./Muensterhof/>Hotel Münsterhof</a></li>
+      <li class=hotel-item><a href=./Oberwaid/>Oberwaid - Das Hotel. Die Klinik.</a></li>
+      <li class=hotel-item><a href=./Paxmontana/>Jugendstil-Hotel Paxmontana</a></li>
+      <li class=hotel-item><a href=./Pestalozzi/>Hotel Pestalozzi Lugano</a></li>
+      <li class=hotel-item><a href=./Placid/>Placid Hotel Design & Lifestyle Zurich</a></li>
+      <li class=hotel-item><a href=./ResidenzaduLac/>Hotel Residenza Du Lac</a></li>
+      <li class=hotel-item><a href=./Saentispark/>Revier Hotel Säntispark</a></li>
+      <li class=hotel-item><a href=./Savoy/>Hotel Savoy Bern</a></li>
+      <li class=hotel-item><a href=./SchweizerhofBasel/>Hotel Schweizerhof Basel</a></li>
+      <li class=hotel-item><a href=./Seeblick/>Strandhotel Seeblick</a></li>
+      <li class=hotel-item><a href=./SenevitaBurgdorf/>Senevita Burgdorf</a></li>
+      <li class=hotel-item><a href=./SenevitaMultengut/>Senevita Residenz Multengut</a></li>
+      <li class=hotel-item><a href=./Spitzhorn/>Hotel Spitzhorn</a></li>
+      <li class=hotel-item><a href=./TertianumalLido/>Tertianum Residenza Al Lido</a></li>
+      <li class=hotel-item><a href=./TertianumalParco/>Hotel Residenza Al Parco</a></li>
+      <li class=hotel-item><a href=./TertianumMeilen/>Tertianum Parkresidenz Meilen</a></li>
+      <li class=hotel-item><a href=./TresaBay/>Tresa Bay Hotel</a></li>
+      <li class=hotel-item><a href=./Valsana/>Valsana Hotel Arosa</a></li>
+      <li class=hotel-item><a href=./VictoriaJungfrau/>Victoria-Jungfrau Grand Hotel & Spa</a></li>
+      <li class=hotel-item><a href=./ZentrumElisabeth/>Zentrum Elisabeth</a></li>
+    </ul>
+
+    <footer>
+      <p>Archivübersicht barrierefreier Daten für Bildungs- und Informationszwecke.</p>
+    </footer>
+  </div>
+
+  <script>
+    function filterHotels() {
+      const input = document.getElementById('searchBar').value.toLowerCase();
+      const items = document.querySelectorAll('.hotel-item');
+
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(input) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
+
+```
